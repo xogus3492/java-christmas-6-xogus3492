@@ -37,4 +37,8 @@ public enum Menu {
     public int getPrice() {
         return price;
     }
+
+    public boolean isDessert() {
+        return this.type.equals("디저트");
+    }
 }

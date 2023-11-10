@@ -14,4 +14,18 @@ public class Order {
                 .mapToInt(menu -> menu.getPrice() * orderMenu.get(menu))
                 .sum();
     }
+
+    public boolean isExistDessert() {
+        for (Menu menu : orderMenu.keySet()) {
+            return menu.isDessert();
+        }
+        return false;
+    }
+
+    public int dessertCount() {
+        return orderMenu.keySet().stream()
+                .filter(menu -> menu.isDessert())
+                .mapToInt(menu -> orderMenu.get(menu))
+                .sum();
+    }
 }

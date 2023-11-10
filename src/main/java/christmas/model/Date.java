@@ -14,4 +14,8 @@ public class Date {
     public int getChristmasBenefit() {
         return (day - 1) * 100;
     }
+
+    public boolean isWeekend() {
+        return (day % 7 == 1) || (day % 7 == 2);
+    }
 }
