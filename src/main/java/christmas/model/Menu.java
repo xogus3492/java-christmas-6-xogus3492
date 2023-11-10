@@ -41,4 +41,8 @@ public enum Menu {
     public boolean isDessert() {
         return this.type.equals("디저트");
     }
+
+    public boolean isMain() {
+        return this.type.equals("메인");
+    }
 }

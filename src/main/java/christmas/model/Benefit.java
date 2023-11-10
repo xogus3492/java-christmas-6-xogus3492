@@ -27,4 +27,11 @@ public class Benefit {
         }
         benefit.put(Sale.WEEKDAYS_SALE, order.dessertCount());
     }
+
+    public void applyWeekendSale() {
+        if (!date.isWeekend() || !order.isExistMain()) {
+            return;
+        }
+        benefit.put(Sale.WEEKEND_SALE, 2023 * order.mainCount());
+    }
 }

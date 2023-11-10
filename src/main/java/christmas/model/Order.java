@@ -28,4 +28,18 @@ public class Order {
                 .mapToInt(menu -> orderMenu.get(menu))
                 .sum();
     }
+
+    public boolean isExistMain() {
+        int count = (int) orderMenu.keySet().stream()
+                .filter(menu -> menu.isMain())
+                .count();
+        return count > 0;
+    }
+
+    public int mainCount() {
+        return orderMenu.keySet().stream()
+                .filter(menu -> menu.isMain())
+                .mapToInt(menu -> orderMenu.get(menu))
+                .sum();
+    }
 }
