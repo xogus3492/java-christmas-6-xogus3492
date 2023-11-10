@@ -34,4 +34,11 @@ public class Benefit {
         }
         benefit.put(Sale.WEEKEND_SALE, 2023 * order.mainCount());
     }
+
+    public void applySpecialSale() {
+        if (!date.isSpecialDay()) {
+            return;
+        }
+        benefit.put(Sale.SPECIAL_SALE, 1000);
+    }
 }

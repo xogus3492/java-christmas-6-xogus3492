@@ -18,4 +18,8 @@ public class Date {
     public boolean isWeekend() {
         return (day % 7 == 1) || (day % 7 == 2);
     }
+
+    public boolean isSpecialDay() {
+        return (day % 7 == 3) || (day == 25);
+    }
 }
