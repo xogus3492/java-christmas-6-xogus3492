@@ -9,7 +9,10 @@ public class InputValidator {
     public static boolean verifyVisitDate(String input) {
         try {
             verifyEmptyOrBlank(input);
+            Integer.parseInt(input);
             return true;
+        } catch (NumberFormatException e) {
+            System.out.println(ErrorMessage.NOT_COMPOSED_OF_NUMBER);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
