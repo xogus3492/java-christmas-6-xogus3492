@@ -16,10 +16,10 @@ public class Order {
     }
 
     public boolean isExistDessert() {
-        for (Menu menu : orderMenu.keySet()) {
-            return menu.isDessert();
-        }
-        return false;
+        int count = (int) orderMenu.keySet().stream()
+                .filter(menu -> menu.isDessert())
+                .count();
+        return count > 0;
     }
 
     public int dessertCount() {

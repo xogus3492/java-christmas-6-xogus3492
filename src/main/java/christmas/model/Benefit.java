@@ -25,7 +25,7 @@ public class Benefit {
         if (date.isWeekend() || !order.isExistDessert()) {
             return;
         }
-        benefit.put(Sale.WEEKDAYS_SALE, order.dessertCount());
+        benefit.put(Sale.WEEKDAYS_SALE, 2023 * order.dessertCount());
     }
 
     public void applyWeekendSale() {
