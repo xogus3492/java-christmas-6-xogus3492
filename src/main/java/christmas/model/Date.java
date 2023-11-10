@@ -1,10 +1,19 @@
 package christmas.model;
 
+import christmas.error.ErrorMessage;
+
 public class Date {
     private final int day;
 
     public Date(int day) {
+        verifyValidRange(day);
         this.day = day;
+    }
+
+    public void verifyValidRange(int day) {
+        if (day < 1 || day > 31) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_VISIT_DATE.getMessage());
+        }
     }
 
     public boolean isUnderTwentySix() {

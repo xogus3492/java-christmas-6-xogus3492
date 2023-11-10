@@ -1,6 +1,7 @@
 package christmas.util;
 
 import christmas.error.ErrorMessage;
+import christmas.model.Date;
 
 public class InputValidator {
     private static final String EMPTY = "";
@@ -9,10 +10,11 @@ public class InputValidator {
     public static boolean verifyVisitDate(String input) {
         try {
             verifyEmptyOrBlank(input);
-            Integer.parseInt(input);
+            int integerInput = Integer.parseInt(input);
+            new Date(integerInput);
             return true;
         } catch (NumberFormatException e) {
-            System.out.println(ErrorMessage.NOT_COMPOSED_OF_NUMBER);
+            System.out.println(ErrorMessage.NOT_COMPOSED_OF_NUMBER.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
