@@ -41,4 +41,11 @@ public class Benefit {
         }
         benefit.put(Sale.SPECIAL_SALE, 1000);
     }
+
+    public void applyGiveawayEvent() {
+        if (order.totalOrderAmount() < 120000) {
+            return;
+        }
+        benefit.put(Sale.GIVEAWAY_EVENT, 25000);
+    }
 }
