@@ -22,6 +22,14 @@ public class InputParser {
                 .collect(Collectors.toList());
     }
 
+    public static int parseNumberOfMenu(String input) {
+        return Arrays.stream(input.split(","))
+                .mapToInt(order -> Integer.parseInt(
+                        order.split("-")[1]
+                ))
+                .sum();
+    }
+
     private InputParser() {
     }
 }

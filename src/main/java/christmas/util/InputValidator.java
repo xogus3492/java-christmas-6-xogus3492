@@ -32,6 +32,7 @@ public class InputValidator {
             List<Menu> menus = verifyMenuExistAndGetIt(names);
             verifyOnlyDrink(menus);
             verifyDuplicateMenu(menus);
+            verifyNumberOfMenu(input);
             return true;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -73,6 +74,13 @@ public class InputValidator {
                 .count();
         if (distinctCount > 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
+        }
+    }
+
+    private static void verifyNumberOfMenu(String input) {
+        int count = InputParser.parseNumberOfMenu(input);
+        if (count > 20) {
+            throw new IllegalArgumentException(ErrorMessage.OVER_NUMBER_OF_MENU.getMessage());
         }
     }
 

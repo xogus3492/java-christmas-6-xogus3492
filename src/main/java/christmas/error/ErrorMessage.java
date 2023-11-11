@@ -5,7 +5,8 @@ public enum ErrorMessage {
     NOT_COMPOSED_OF_NUMBER("날짜는 숫자로만 이루어져야 합니다. 다시 입력해 주세요."),
     INVALID_VISIT_DATE("유효하지 않은 날짜입니다. 다시 입력해 주세요."),
     INVALID_ORDER("유효하지 않은 주문입니다. 다시 입력해 주세요."),
-    ONLY_DRINK_MENU("음료만 주문하실 수 없습니다. 다시 입력해 주세요.");
+    ONLY_DRINK_MENU("음료만 주문하실 수 없습니다. 다시 입력해 주세요."),
+    OVER_NUMBER_OF_MENU("메뉴는 20개를 초과할 수 없습니다. 다시 입력해 주세요.");
 
     private final String message;
 
