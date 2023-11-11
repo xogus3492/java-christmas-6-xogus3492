@@ -30,6 +30,7 @@ public class InputValidator {
             verifyForm(input);
             List<String> names = InputParser.parseMenuList(input);
             List<Menu> menus = verifyMenuExistAndGetIt(names);
+            verifyOnlyDrink(menus);
             return true;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -56,6 +57,13 @@ public class InputValidator {
             menus.add(Menu.verifyExistMenuAndOnlyDrink(name));
         }
         return menus;
+    }
+
+    public static void verifyOnlyDrink(List<Menu> menus) {
+        menus.stream()
+                .filter(menu -> !menu.isDrink())
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ONLY_DRINK_MENU.getMessage()));
     }
 
     private InputValidator() {

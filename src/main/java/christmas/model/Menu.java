@@ -49,6 +49,10 @@ public enum Menu {
         return this.type.equals("메인");
     }
 
+    public boolean isDrink() {
+        return this.type.equals("음료");
+    }
+
     public static Menu verifyExistMenuAndOnlyDrink(String name) {
         return Arrays.stream(values())
                 .filter(menu -> menu.name.equals(name))
