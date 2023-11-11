@@ -21,8 +21,14 @@ public class InputView {
     }
 
     public Map<String, Integer> inputOrderMenu() {
-        System.out.println(PrintMessage.ORDER_MENU_INPUT_MESSAGE.getMessage());
-        String input = Console.readLine();
+        String input;
+        while(true) {
+            System.out.println(PrintMessage.ORDER_MENU_INPUT_MESSAGE.getMessage());
+            input = Console.readLine();
+            if (InputValidator.verifyOrderMenu(input)) {
+                break;
+            }
+        }
         return InputParser.parseMap(input);
     }
 }

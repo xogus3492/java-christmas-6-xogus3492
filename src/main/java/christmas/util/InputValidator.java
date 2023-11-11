@@ -2,6 +2,7 @@ package christmas.util;
 
 import christmas.error.ErrorMessage;
 import christmas.model.Date;
+import java.util.regex.Pattern;
 
 public class InputValidator {
     private static final String EMPTY = "";
@@ -21,9 +22,26 @@ public class InputValidator {
         return false;
     }
 
+    public static boolean verifyOrderMenu(String input) {
+        try {
+            verifyForm(input);
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
     private static void verifyEmptyOrBlank(String input) {
         if (input.equals(EMPTY) || input.equals(SPACE)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_EMPTY_OR_BLANK.getMessage());
+        }
+    }
+
+    public static void verifyForm(String input) {
+        String regex = "^([가-힣]+-[1-9]+,)*[가-힣]+-[1-9]+$";
+        if (!Pattern.matches(regex, input)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
         }
     }
 
