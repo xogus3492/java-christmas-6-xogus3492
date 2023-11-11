@@ -31,6 +31,7 @@ public class InputValidator {
             List<String> names = InputParser.parseMenuList(input);
             List<Menu> menus = verifyMenuExistAndGetIt(names);
             verifyOnlyDrink(menus);
+            verifyDuplicateMenu(menus);
             return true;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -64,6 +65,15 @@ public class InputValidator {
                 .filter(menu -> !menu.isDrink())
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ONLY_DRINK_MENU.getMessage()));
+    }
+
+    public static void verifyDuplicateMenu(List<Menu> menus) {
+        int distinctCount = (int) menus.stream()
+                .distinct()
+                .count();
+        if (distinctCount > 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
+        }
     }
 
     private InputValidator() {
