@@ -4,6 +4,7 @@ import christmas.error.ErrorMessage;
 import christmas.model.Date;
 import christmas.model.Menu;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -46,14 +47,14 @@ public class InputValidator {
         }
     }
 
-    public static void verifyForm(String input) {
+    private static void verifyForm(String input) {
         String regex = "^([가-힣]+-[1-9]+,)*[가-힣]+-[1-9]+$";
         if (!Pattern.matches(regex, input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
         }
     }
 
-    public static List<Menu> verifyMenuExistAndGetIt(List<String> input) {
+    private static List<Menu> verifyMenuExistAndGetIt(List<String> input) {
         List<Menu> menus = new ArrayList<>();
         for (String name : input) {
             menus.add(Menu.getMenu(name));
@@ -61,18 +62,15 @@ public class InputValidator {
         return menus;
     }
 
-    public static void verifyOnlyDrink(List<Menu> menus) {
+    private static void verifyOnlyDrink(List<Menu> menus) {
         menus.stream()
                 .filter(menu -> !menu.isDrink())
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ONLY_DRINK_MENU.getMessage()));
     }
 
-    public static void verifyDuplicateMenu(List<Menu> menus) {
-        int distinctCount = (int) menus.stream()
-                .distinct()
-                .count();
-        if (distinctCount > 0) {
+    private static void verifyDuplicateMenu(List<Menu> menus) {
+        if (new HashSet<>(menus).size() != menus.size()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
         }
     }
