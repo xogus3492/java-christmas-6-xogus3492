@@ -1,5 +1,8 @@
 package christmas.model;
 
+import christmas.error.ErrorMessage;
+import java.util.Arrays;
+
 public enum Menu {
 
     // 에피타이저
@@ -44,5 +47,12 @@ public enum Menu {
 
     public boolean isMain() {
         return this.type.equals("메인");
+    }
+
+    public static Menu verifyExistMenuAndOnlyDrink(String name) {
+        return Arrays.stream(values())
+                .filter(menu -> menu.name.equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage()));
     }
 }

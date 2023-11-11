@@ -2,6 +2,9 @@ package christmas.util;
 
 import christmas.error.ErrorMessage;
 import christmas.model.Date;
+import christmas.model.Menu;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputValidator {
@@ -25,6 +28,8 @@ public class InputValidator {
     public static boolean verifyOrderMenu(String input) {
         try {
             verifyForm(input);
+            List<String> names = InputParser.parseMenuList(input);
+            List<Menu> menus = verifyMenuExistAndGetIt(names);
             return true;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -43,6 +48,14 @@ public class InputValidator {
         if (!Pattern.matches(regex, input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
         }
+    }
+
+    public static List<Menu> verifyMenuExistAndGetIt(List<String> input) {
+        List<Menu> menus = new ArrayList<>();
+        for (String name : input) {
+            menus.add(Menu.verifyExistMenuAndOnlyDrink(name));
+        }
+        return menus;
     }
 
     private InputValidator() {
