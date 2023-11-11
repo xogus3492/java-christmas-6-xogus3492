@@ -55,7 +55,7 @@ public class InputValidator {
     public static List<Menu> verifyMenuExistAndGetIt(List<String> input) {
         List<Menu> menus = new ArrayList<>();
         for (String name : input) {
-            menus.add(Menu.verifyExistMenuAndOnlyDrink(name));
+            menus.add(Menu.getMenu(name));
         }
         return menus;
     }
