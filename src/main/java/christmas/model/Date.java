@@ -31,4 +31,8 @@ public class Date {
     public boolean isSpecialDay() {
         return (day % 7 == 3) || (day == 25);
     }
+
+    public int getDay() {
+        return day;
+    }
 }
