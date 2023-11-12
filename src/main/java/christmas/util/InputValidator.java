@@ -19,7 +19,7 @@ public class InputValidator {
             new Date(integerInput);
             return true;
         } catch (NumberFormatException e) {
-            System.out.println(ErrorMessage.NOT_COMPOSED_OF_NUMBER.getMessage());
+            System.out.println(ErrorMessage.INVALID_VISIT_DATE.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
