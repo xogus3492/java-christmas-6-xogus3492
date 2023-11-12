@@ -9,7 +9,9 @@ public enum PrintMessage {
     START_OUTPUT_MESSAGE("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."),
     INTRODUCTION_OUTPUT_MESSAGE("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
     ORDER_MENU_OUTPUT_MESSAGE("<주문 메뉴>"),
-    TOTAL_AMOUNT_BEFORE_SALE_OUTPUT_MESSAGE("<할인 전 총주문 금액>");
+    TOTAL_AMOUNT_BEFORE_SALE_OUTPUT_MESSAGE("<할인 전 총주문 금액>"),
+    GIVEAWAY_MENU_OUTPUT_MESSAGE("<증정 메뉴>"),
+    GIVEAWAY_MENU("샴페인 1개");
 
     private final String message;
 

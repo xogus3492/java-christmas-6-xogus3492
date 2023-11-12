@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.model.Benefit;
 import christmas.model.Date;
 import christmas.model.Order;
 import christmas.view.message.PrintMessage;
@@ -21,7 +22,12 @@ public class OutputView {
     public void printTotalAmountBeforeSale(Order order) {
         System.out.println(
                 PrintMessage.TOTAL_AMOUNT_BEFORE_SALE_OUTPUT_MESSAGE.getMessage() + "\n"
-                        + order.totalOrderAmount() + "원"
+                        + order.totalOrderAmount() + "원" + "\n"
         );
+    }
+
+    public void printGiveawayMenu(Benefit benefit) {
+        System.out.println(PrintMessage.GIVEAWAY_MENU_OUTPUT_MESSAGE.getMessage());
+        System.out.println(benefit.getGiveawayMenuByCase() + "\n");
     }
 }

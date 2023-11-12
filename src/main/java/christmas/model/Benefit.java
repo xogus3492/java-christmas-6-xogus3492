@@ -49,6 +49,13 @@ public class Benefit {
         benefit.put(Event.GIVEAWAY_EVENT, 25000);
     }
 
+    public String getGiveawayMenuByCase() {
+        if (benefit.containsKey(Event.GIVEAWAY_EVENT)) {
+            return "샴페인 1개";
+        }
+        return "없음";
+    }
+
     public int totalBenefitAmount() {
         return benefit.keySet().stream()
                 .mapToInt(event -> benefit.get(event))
