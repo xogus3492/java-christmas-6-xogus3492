@@ -69,7 +69,7 @@ public class Benefit {
             stringBuilder.append(event.getName() + ": -" + benefit.get(event) + "원\n");
         }
         if (stringBuilder.toString().equals("")) {
-            stringBuilder.append("없음");
+            stringBuilder.append("없음\n");
         }
         return stringBuilder.toString();
     }

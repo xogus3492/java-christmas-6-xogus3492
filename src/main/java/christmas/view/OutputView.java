@@ -35,4 +35,9 @@ public class OutputView {
         System.out.println(PrintMessage.BENEFIT_HISTORY_OUTPUT_MESSAGE.getMessage());
         System.out.println(benefit);
     }
+
+    public void printTotalBenefitAmount(Benefit benefit) {
+        System.out.println(PrintMessage.TOTAL_BENEFIT_AMOUNT_OUTPUT_MESSAGE.getMessage());
+        System.out.printf("-" + benefit.totalBenefitAmount() + "원\n\n");
+    }
 }
