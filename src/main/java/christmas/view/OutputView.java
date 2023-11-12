@@ -45,4 +45,9 @@ public class OutputView {
         System.out.println(PrintMessage.EXPECTATION_AMOUNT_AFTER_SALE_OUTPUT_MESSAGE.getMessage());
         System.out.println(order.totalOrderAmount() - benefit.totalSaleAmount() + "원\n");
     }
+
+    public void printEventBadge(Benefit benefit) {
+        System.out.println(PrintMessage.EVENT_BADGE_OUTPUT_MESSAGE.getMessage());
+        System.out.println(benefit.getBadgeByTotalSaleAmount());
+    }
 }

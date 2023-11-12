@@ -69,6 +69,20 @@ public class Benefit {
                 .sum();
     }
 
+    public String getBadgeByTotalSaleAmount() {
+        int totalBenefitAmount = totalBenefitAmount();
+        if (totalBenefitAmount > 20000) {
+            return "산타";
+        }
+        if (totalBenefitAmount > 10000) {
+            return "트리";
+        }
+        if (totalBenefitAmount > 5000) {
+            return "별";
+        }
+        return "없음";
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

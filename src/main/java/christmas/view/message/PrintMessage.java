@@ -13,7 +13,8 @@ public enum PrintMessage {
     GIVEAWAY_MENU_OUTPUT_MESSAGE("<증정 메뉴>"),
     BENEFIT_HISTORY_OUTPUT_MESSAGE("<혜택 내역>"),
     TOTAL_BENEFIT_AMOUNT_OUTPUT_MESSAGE("<총혜택 금액>"),
-    EXPECTATION_AMOUNT_AFTER_SALE_OUTPUT_MESSAGE("<할인 후 예상 결제 금액>");
+    EXPECTATION_AMOUNT_AFTER_SALE_OUTPUT_MESSAGE("<할인 후 예상 결제 금액>"),
+    EVENT_BADGE_OUTPUT_MESSAGE("<12월 이벤트 배지>");
 
     private final String message;
 
