@@ -7,7 +7,8 @@ public enum PrintMessage {
 
     // OutputView
     START_OUTPUT_MESSAGE("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."),
-    INTRODUCTION_OUTPUT_MESSAGE("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+    INTRODUCTION_OUTPUT_MESSAGE("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
+    ORDER_MENU_OUTPUT_MESSAGE("<주문 메뉴>");
 
     private final String message;
 

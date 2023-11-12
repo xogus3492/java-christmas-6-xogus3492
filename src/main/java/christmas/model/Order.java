@@ -42,4 +42,13 @@ public class Order {
                 .mapToInt(menu -> orderMenu.get(menu))
                 .sum();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Menu menu : orderMenu.keySet()) {
+            stringBuilder.append(menu.getName() + " " + orderMenu.get(menu) + "개\n");
+        }
+        return stringBuilder.toString();
+    }
 }

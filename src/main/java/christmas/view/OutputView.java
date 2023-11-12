@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.model.Date;
+import christmas.model.Order;
 import christmas.view.message.PrintMessage;
 
 public class OutputView {
@@ -10,6 +11,10 @@ public class OutputView {
     }
 
     public void printIntroductionMessage(Date date) {
-        System.out.printf(PrintMessage.INTRODUCTION_OUTPUT_MESSAGE.getMessage() + "\n", date.getDay());
+        System.out.printf(PrintMessage.INTRODUCTION_OUTPUT_MESSAGE.getMessage() + "\n\n", date.getDay());
+    }
+
+    public void printOrderMenu(Order order) {
+        System.out.println(PrintMessage.ORDER_MENU_OUTPUT_MESSAGE.getMessage() + "\n" + order.toString());
     }
 }
