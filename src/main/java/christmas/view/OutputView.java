@@ -17,4 +17,11 @@ public class OutputView {
     public void printOrderMenu(Order order) {
         System.out.println(PrintMessage.ORDER_MENU_OUTPUT_MESSAGE.getMessage() + "\n" + order.toString());
     }
+
+    public void printTotalAmountBeforeSale(Order order) {
+        System.out.println(
+                PrintMessage.TOTAL_AMOUNT_BEFORE_SALE_OUTPUT_MESSAGE.getMessage() + "\n"
+                        + order.totalOrderAmount() + "원"
+        );
+    }
 }
