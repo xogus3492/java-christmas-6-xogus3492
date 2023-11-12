@@ -30,4 +30,9 @@ public class OutputView {
         System.out.println(PrintMessage.GIVEAWAY_MENU_OUTPUT_MESSAGE.getMessage());
         System.out.println(benefit.getGiveawayMenuByCase() + "\n");
     }
+
+    public void printBenefitHistory(Benefit benefit) {
+        System.out.println(PrintMessage.BENEFIT_HISTORY_OUTPUT_MESSAGE.getMessage());
+        System.out.println(benefit);
+    }
 }

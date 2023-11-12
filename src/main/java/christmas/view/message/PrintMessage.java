@@ -11,7 +11,7 @@ public enum PrintMessage {
     ORDER_MENU_OUTPUT_MESSAGE("<주문 메뉴>"),
     TOTAL_AMOUNT_BEFORE_SALE_OUTPUT_MESSAGE("<할인 전 총주문 금액>"),
     GIVEAWAY_MENU_OUTPUT_MESSAGE("<증정 메뉴>"),
-    GIVEAWAY_MENU("샴페인 1개");
+    BENEFIT_HISTORY_OUTPUT_MESSAGE("<혜택 내역>");
 
     private final String message;
 

@@ -61,4 +61,16 @@ public class Benefit {
                 .mapToInt(event -> benefit.get(event))
                 .sum();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Event event : benefit.keySet()) {
+            stringBuilder.append(event.getName() + ": -" + benefit.get(event) + "원\n");
+        }
+        if (stringBuilder.toString().equals("")) {
+            stringBuilder.append("없음");
+        }
+        return stringBuilder.toString();
+    }
 }
