@@ -1,12 +1,23 @@
 package christmas.model;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Order {
     private final Map<Menu, Integer> orderMenu; // <메뉴, 수량>
 
-    public Order(Map<Menu, Integer> orderMenu) {
+    private Order(Map<Menu, Integer> orderMenu) {
         this.orderMenu = orderMenu;
+    }
+
+    public static Order of(Map<String, Integer> orderMenu) {
+        return new Order(
+                orderMenu.entrySet().stream()
+                        .collect(Collectors.toMap(
+                                entry -> Menu.getMenu(entry.getKey()),
+                                Map.Entry::getValue
+                        ))
+        );
     }
 
     public int totalOrderAmount() {
