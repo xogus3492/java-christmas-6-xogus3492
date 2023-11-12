@@ -62,6 +62,13 @@ public class Benefit {
                 .sum();
     }
 
+    public int totalSaleAmount() {
+        return benefit.keySet().stream()
+                .filter(event -> event != Event.GIVEAWAY_EVENT)
+                .mapToInt(event -> benefit.get(event))
+                .sum();
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

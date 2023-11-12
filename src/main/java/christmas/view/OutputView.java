@@ -40,4 +40,9 @@ public class OutputView {
         System.out.println(PrintMessage.TOTAL_BENEFIT_AMOUNT_OUTPUT_MESSAGE.getMessage());
         System.out.printf("-" + benefit.totalBenefitAmount() + "원\n\n");
     }
+
+    public void printExpectationAmountAfterSale(Order order, Benefit benefit) {
+        System.out.println(PrintMessage.EXPECTATION_AMOUNT_AFTER_SALE_OUTPUT_MESSAGE.getMessage());
+        System.out.println(order.totalOrderAmount() - benefit.totalSaleAmount() + "원\n");
+    }
 }
