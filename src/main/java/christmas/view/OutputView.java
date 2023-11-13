@@ -3,6 +3,7 @@ package christmas.view;
 import christmas.model.Benefit;
 import christmas.model.Date;
 import christmas.model.Order;
+import christmas.util.NumberFormatter;
 import christmas.view.message.PrintMessage;
 
 public class OutputView {
@@ -22,7 +23,7 @@ public class OutputView {
     public void printTotalAmountBeforeSale(Order order) {
         System.out.println(
                 PrintMessage.TOTAL_AMOUNT_BEFORE_SALE_OUTPUT_MESSAGE.getMessage() + "\n"
-                        + order.totalOrderAmount() + "원" + "\n"
+                        + NumberFormatter.formulateNumber(order.totalOrderAmount()) + "원" + "\n"
         );
     }
 
@@ -38,12 +39,14 @@ public class OutputView {
 
     public void printTotalBenefitAmount(Benefit benefit) {
         System.out.println(PrintMessage.TOTAL_BENEFIT_AMOUNT_OUTPUT_MESSAGE.getMessage());
-        System.out.printf("-" + benefit.totalBenefitAmount() + "원\n\n");
+        System.out.printf("-" + NumberFormatter.formulateNumber(benefit.totalBenefitAmount()) + "원\n\n");
     }
 
     public void printExpectationAmountAfterSale(Order order, Benefit benefit) {
         System.out.println(PrintMessage.EXPECTATION_AMOUNT_AFTER_SALE_OUTPUT_MESSAGE.getMessage());
-        System.out.println(order.totalOrderAmount() - benefit.totalSaleAmount() + "원\n");
+        System.out.println(NumberFormatter.formulateNumber(
+                        order.totalOrderAmount() - benefit.totalSaleAmount()
+                ) + "원\n");
     }
 
     public void printEventBadge(Benefit benefit) {

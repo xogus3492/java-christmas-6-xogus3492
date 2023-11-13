@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.util.NumberFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -87,7 +88,9 @@ public class Benefit {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Event event : benefit.keySet()) {
-            stringBuilder.append(event.getName() + ": -" + benefit.get(event) + "원\n");
+            stringBuilder.append(event.getName()
+                    + ": -" + NumberFormatter.formulateNumber(benefit.get(event)
+            ) + "원\n");
         }
         if (stringBuilder.toString().equals("")) {
             stringBuilder.append("없음\n");
