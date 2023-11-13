@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.model.Benefit;
 import christmas.model.Date;
 import christmas.model.Order;
+import christmas.policy.EventPolicy;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -25,7 +26,7 @@ public class Controller {
     }
 
     private Benefit applyBenefit(Order order, Benefit benefit) {
-        if (order.totalOrderAmount() >= 10000) {
+        if (order.totalOrderAmount() >= EventPolicy.EVENT_APPLY_CONSTRAINT.getLimit()) {
             benefit.applyChristmasDDaySale();
             benefit.applyWeekdaysSale();
             benefit.applyWeekendSale();

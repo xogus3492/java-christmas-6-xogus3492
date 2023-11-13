@@ -3,6 +3,7 @@ package christmas.util;
 import christmas.error.ErrorMessage;
 import christmas.model.Date;
 import christmas.model.Menu;
+import christmas.policy.EventPolicy;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -77,7 +78,7 @@ public class InputValidator {
 
     private static void verifyNumberOfMenu(String input) {
         int count = InputParser.parseNumberOfMenu(input);
-        if (count > 20) {
+        if (count > EventPolicy.NUMBER_OF_MENU_CONSTRAINT.getLimit()) {
             throw new IllegalArgumentException(ErrorMessage.OVER_NUMBER_OF_MENU.getMessage());
         }
     }

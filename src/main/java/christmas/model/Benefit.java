@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.policy.EventPolicy;
 import christmas.util.NumberFormatter;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,35 +20,38 @@ public class Benefit {
         if (!date.isUnderTwentySix()) {
             return;
         }
-        benefit.put(Event.CHRISTMAS_D_DAY_SALE, 1000 + date.getChristmasBenefit());
+        benefit.put(Event.CHRISTMAS_D_DAY_SALE,
+                Event.CHRISTMAS_D_DAY_SALE.getDiscount() + date.getChristmasBenefit());
     }
 
     public void applyWeekdaysSale() {
         if (date.isWeekend() || !order.isExistDessert()) {
             return;
         }
-        benefit.put(Event.WEEKDAYS_SALE, 2023 * order.dessertCount());
+        benefit.put(Event.WEEKDAYS_SALE,
+                Event.WEEKDAYS_SALE.getDiscount() * order.dessertCount());
     }
 
     public void applyWeekendSale() {
         if (!date.isWeekend() || !order.isExistMain()) {
             return;
         }
-        benefit.put(Event.WEEKEND_SALE, 2023 * order.mainCount());
+        benefit.put(Event.WEEKEND_SALE,
+                Event.WEEKEND_SALE.getDiscount() * order.mainCount());
     }
 
     public void applySpecialSale() {
         if (!date.isSpecialDay()) {
             return;
         }
-        benefit.put(Event.SPECIAL_SALE, 1000);
+        benefit.put(Event.SPECIAL_SALE, Event.SPECIAL_SALE.getDiscount());
     }
 
     public void applyGiveawayEvent() {
-        if (order.totalOrderAmount() < 120000) {
+        if (order.totalOrderAmount() < EventPolicy.GIVEAWAY_EVENT_CONSTRAINT.getLimit()) {
             return;
         }
-        benefit.put(Event.GIVEAWAY_EVENT, 25000);
+        benefit.put(Event.GIVEAWAY_EVENT, Event.GIVEAWAY_EVENT.getDiscount());
     }
 
     public String getGiveawayMenuByCase() {
@@ -72,13 +76,13 @@ public class Benefit {
 
     public String getBadgeByTotalSaleAmount() {
         int totalBenefitAmount = totalBenefitAmount();
-        if (totalBenefitAmount > 20000) {
+        if (totalBenefitAmount > EventPolicy.SANTA_BADGE_CONSTRAINT.getLimit()) {
             return "산타";
         }
-        if (totalBenefitAmount > 10000) {
+        if (totalBenefitAmount > EventPolicy.TREE_BADGE_CONSTRAINT.getLimit()) {
             return "트리";
         }
-        if (totalBenefitAmount > 5000) {
+        if (totalBenefitAmount > EventPolicy.STAR_BADGE_CONSTRAINT.getLimit()) {
             return "별";
         }
         return "없음";
