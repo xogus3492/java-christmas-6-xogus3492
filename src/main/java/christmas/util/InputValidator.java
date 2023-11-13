@@ -49,7 +49,7 @@ public class InputValidator {
     }
 
     private static void verifyForm(String input) {
-        String regex = "^([가-힣]+-[1-9]+,)*[가-힣]+-[1-9]+$";
+        String regex = "^([가-힣]+-([1-9][0-9]?)+,)*[가-힣]+-([1-9][0-9]?)+$";
         if (!Pattern.matches(regex, input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
         }
