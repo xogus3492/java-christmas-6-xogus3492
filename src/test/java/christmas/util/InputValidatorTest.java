@@ -29,4 +29,16 @@ public class InputValidatorTest {
         //then
         assertThat(exception).isFalse();
     }
+
+    @Test
+    void 날짜_범위를_벗어난_날짜입력이라면_예외가_발생하여_false를_반환한다() {
+        //given
+        String input = "32";
+
+        //when
+        final boolean exception = InputValidator.verifyVisitDate(input);
+
+        //then
+        assertThat(exception).isFalse();
+    }
 }
