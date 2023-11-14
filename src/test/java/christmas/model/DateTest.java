@@ -25,4 +25,30 @@ public class DateTest {
         //then
         assertThat(christmasBenefit).isEqualTo(2000);
     }
+
+    @Test
+    void 날짜가_2일_이라면_주말이다() {
+        //given
+        int day = 2;
+        Date date = new Date(day);
+
+        //when
+        final boolean weekend = date.isWeekend();
+
+        //then
+        assertThat(weekend).isTrue();
+    }
+
+    @Test
+    void 날짜가_3일_이라면_주말이_아니다() {
+        //given
+        int day = 3;
+        Date date = new Date(day);
+
+        //when
+        final boolean weekend = date.isWeekend();
+
+        //then
+        assertThat(weekend).isFalse();
+    }
 }
