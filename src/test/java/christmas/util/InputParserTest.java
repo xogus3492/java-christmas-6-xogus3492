@@ -34,4 +34,16 @@ public class InputParserTest {
         assertThat(orderMenu).hasSize(3)
                 .contains("바비큐립", "아이스크림", "레드와인");
     }
+
+    @Test
+    void 입력받은_메뉴를_파라미터로_넘기면_주문한_메뉴의_총갯수로_파싱한다() {
+        //given
+        String input = "타파스-5,티본스테이크-2,해산물파스타-3,초코케이크-1,샴페인-2";
+
+        //when
+        final int count = InputParser.parseNumberOfMenu(input);
+
+        //then
+        assertThat(count).isEqualTo(13);
+    }
 }
