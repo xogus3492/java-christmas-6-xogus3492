@@ -53,4 +53,16 @@ public class InputValidatorTest {
         //then
         assertThat(exception).isFalse();
     }
+
+    @Test
+    void 메뉴입력에_존재하지_않은_메뉴가_있다면_예외가_발생하여_false를_반환한다() {
+        //given
+        String input = "티본스테이크-1,타코야끼-1";
+
+        //when
+        final boolean exception = InputValidator.verifyOrderMenu(input);
+
+        //then
+        assertThat(exception).isFalse();
+    }
 }
