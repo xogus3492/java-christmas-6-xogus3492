@@ -122,4 +122,28 @@ public class BenefitTest {
         //then
         assertThat(giveawayMenu).contains("샴페인 1개");
     }
+
+    @Test
+    void 티본스테이크1개와_바비큐립1개를_2일에_주문하면_총_5146원을_혜택받는다() {
+        //given
+        Date date = new Date(2);
+
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("티본스테이크", 1);
+        orderMenu.put("바비큐립", 1);
+        Order order = Order.of(orderMenu);
+
+        Benefit benefit = new Benefit(date, order);
+        benefit.applyChristmasDDaySale();
+        benefit.applyWeekdaysSale();
+        benefit.applyWeekendSale();
+        benefit.applySpecialSale();
+        benefit.applyGiveawayEvent();
+
+        //when
+        final int totalBenefitAmount = benefit.totalBenefitAmount();
+
+        //then
+        assertThat(totalBenefitAmount).isEqualTo(5146);
+    }
 }
