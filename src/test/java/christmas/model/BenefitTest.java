@@ -79,4 +79,25 @@ public class BenefitTest {
         //then
         assertThat(benefit.toString()).contains("특별 할인: -1,000원");
     }
+
+    @Test
+    void 메뉴를_120000원_이상_주문하면_증정_이벤트로_25000원_혜택을_받는다() {
+        //given
+        Date date = new Date(3);
+
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("티본스테이크", 1);
+        orderMenu.put("바비큐립", 1);
+        orderMenu.put("초코케이크", 2);
+        orderMenu.put("제로콜라", 1);
+        Order order = Order.of(orderMenu);
+
+        Benefit benefit = new Benefit(date, order);
+
+        //when
+        benefit.applyGiveawayEvent();
+
+        //then
+        assertThat(benefit.toString()).contains("증정 이벤트: -25,000원");
+    }
 }
