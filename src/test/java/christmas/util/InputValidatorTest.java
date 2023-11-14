@@ -89,4 +89,16 @@ public class InputValidatorTest {
         //then
         assertThat(exception).isFalse();
     }
+
+    @Test
+    void 입력한_메뉴의_갯수가_20개를_초과한다면_예외가_발생하여_false를_반환한다() {
+        //given
+        String input = "티본스테이크-10,바비큐립-10,초코케이크-1";
+
+        //when
+        final boolean exception = InputValidator.verifyOrderMenu(input);
+
+        //then
+        assertThat(exception).isFalse();
+    }
 }
