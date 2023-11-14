@@ -195,4 +195,35 @@ public class BenefitTest {
         //then
         assertThat(badge).isEqualTo("트리");
     }
+
+    @Test
+    void 혜택이_적용되면_혜택내역을_반환한다() {
+        //given
+        Date date = new Date(3);
+
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("티본스테이크", 1);
+        orderMenu.put("바비큐립", 1);
+        orderMenu.put("초코케이크", 2);
+        orderMenu.put("제로콜라", 1);
+        Order order = Order.of(orderMenu);
+
+        Benefit benefit = new Benefit(date, order);
+        benefit.applyChristmasDDaySale();
+        benefit.applyWeekdaysSale();
+        benefit.applyWeekendSale();
+        benefit.applySpecialSale();
+        benefit.applyGiveawayEvent();
+
+        //when
+        final String benefitCondition = benefit.toString();
+
+        //then
+        assertThat(benefitCondition).contains(
+                "크리스마스 디데이 할인: -1,200원",
+                "평일 할인: -4,046원",
+                "특별 할인: -1,000원",
+                "증정 이벤트: -25,000원"
+        );
+    }
 }
