@@ -62,4 +62,21 @@ public class BenefitTest {
         //then
         assertThat(benefit.toString()).contains("주말 할인: -4,046원");
     }
+
+    @Test
+    void 특별_지정날에_주문하면_특별_할인에_의해_1000원이_할인된다() {
+        //given
+        Date date = new Date(25);
+
+        Map<String, Integer> orderMenu = new HashMap<>();
+        Order order = Order.of(orderMenu);
+
+        Benefit benefit = new Benefit(date, order);
+
+        //when
+        benefit.applySpecialSale();
+
+        //then
+        assertThat(benefit.toString()).contains("특별 할인: -1,000원");
+    }
 }
