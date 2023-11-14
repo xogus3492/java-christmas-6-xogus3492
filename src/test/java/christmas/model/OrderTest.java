@@ -82,4 +82,20 @@ public class OrderTest {
         //then
         assertThat(mainCount).isEqualTo(3);
     }
+
+    @Test
+    void 바비큐립1개와_타파스1개와_샴페인2개를_주문하면_주문내역을_반환한다() {
+        //given
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("바비큐립", 1);
+        orderMenu.put("타파스", 1);
+        orderMenu.put("샴페인", 2);
+        Order order = Order.of(orderMenu);
+
+        //when
+        final String orderCondition = order.toString();
+
+        //then
+        assertThat(orderCondition).contains("바비큐립 1개", "타파스 1개", "샴페인 2개");
+    }
 }
