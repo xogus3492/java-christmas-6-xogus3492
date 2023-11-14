@@ -172,4 +172,27 @@ public class BenefitTest {
         //then
         assertThat(totalSaleAmount).isNotEqualTo(31246);
     }
+
+    @Test
+    void 총혜택_금액이_10000원_이상_20000원_이하라면_트리_뱃지를_부여한다() {
+        //given
+        Date date = new Date(25);
+
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("초코케이크", 3);
+        Order order = Order.of(orderMenu);
+
+        Benefit benefit = new Benefit(date, order);
+        benefit.applyChristmasDDaySale();
+        benefit.applyWeekdaysSale();
+        benefit.applyWeekendSale();
+        benefit.applySpecialSale();
+        benefit.applyGiveawayEvent();
+
+        //when
+        final String badge = benefit.getBadgeByTotalSaleAmount();
+
+        //then
+        assertThat(badge).isEqualTo("트리");
+    }
 }
