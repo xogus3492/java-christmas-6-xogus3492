@@ -100,4 +100,26 @@ public class BenefitTest {
         //then
         assertThat(benefit.toString()).contains("증정 이벤트: -25,000원");
     }
+
+    @Test
+    void 증정_이벤트에_해당한다면_샴페인1개를_받는다() {
+        //given
+        Date date = new Date(3);
+
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("티본스테이크", 1);
+        orderMenu.put("바비큐립", 1);
+        orderMenu.put("초코케이크", 2);
+        orderMenu.put("제로콜라", 1);
+        Order order = Order.of(orderMenu);
+
+        Benefit benefit = new Benefit(date, order);
+        benefit.applyGiveawayEvent();
+
+        //when
+        final String giveawayMenu = benefit.getGiveawayMenuByCase();
+
+        //then
+        assertThat(giveawayMenu).contains("샴페인 1개");
+    }
 }
