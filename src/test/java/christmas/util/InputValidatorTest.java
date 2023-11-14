@@ -65,4 +65,16 @@ public class InputValidatorTest {
         //then
         assertThat(exception).isFalse();
     }
+
+    @Test
+    void 메뉴입력에_음료만_있다면_예외가_발생하여_false를_반환한다() {
+        //given
+        String input = "제로콜라-1,레드와인-1,샴페인-1";
+
+        //when
+        final boolean exception = InputValidator.verifyOrderMenu(input);
+
+        //then
+        assertThat(exception).isFalse();
+    }
 }
