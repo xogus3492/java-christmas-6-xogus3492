@@ -17,4 +17,16 @@ public class InputValidatorTest {
         //then
         assertThat(exception).isFalse();
     }
+
+    @Test
+    void 날짜입력에_문자가_포함되면_예외가_발생하여_false를_반환한다() {
+        //given
+        String input = "char";
+
+        //when
+        final boolean exception = InputValidator.verifyVisitDate(input);
+
+        //then
+        assertThat(exception).isFalse();
+    }
 }
