@@ -10,7 +10,7 @@ public class Date {
         this.day = day;
     }
 
-    public void verifyValidRange(int day) {
+    private void verifyValidRange(int day) {
         if (day < 1 || day > 31) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_VISIT_DATE.getMessage());
         }
