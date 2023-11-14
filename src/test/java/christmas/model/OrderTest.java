@@ -67,4 +67,19 @@ public class OrderTest {
         //then
         assertThat(existMain).isTrue();
     }
+
+    @Test
+    void 바비큐립2개와_해산물파스타1개를_주문하면_메인메뉴_갯수_3을_반환한다() {
+        //given
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("바비큐립", 2);
+        orderMenu.put("해산물파스타", 1);
+        Order order = Order.of(orderMenu);
+
+        //when
+        final int mainCount = order.mainCount();
+
+        //then
+        assertThat(mainCount).isEqualTo(3);
+    }
 }
