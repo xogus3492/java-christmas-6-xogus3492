@@ -146,4 +146,30 @@ public class BenefitTest {
         //then
         assertThat(totalBenefitAmount).isEqualTo(5146);
     }
+
+    @Test
+    void 증정_이벤트가_적용되어도_총할인_금액에_포함되지_않는다() {
+        //given
+        Date date = new Date(3);
+
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("티본스테이크", 1);
+        orderMenu.put("바비큐립", 1);
+        orderMenu.put("초코케이크", 2);
+        orderMenu.put("제로콜라", 1);
+        Order order = Order.of(orderMenu);
+
+        Benefit benefit = new Benefit(date, order);
+        benefit.applyChristmasDDaySale();
+        benefit.applyWeekdaysSale();
+        benefit.applyWeekendSale();
+        benefit.applySpecialSale();
+        benefit.applyGiveawayEvent();
+
+        //when
+        final int totalSaleAmount = benefit.totalSaleAmount();
+
+        //then
+        assertThat(totalSaleAmount).isNotEqualTo(31246);
+    }
 }
