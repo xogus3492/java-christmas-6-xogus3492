@@ -51,4 +51,17 @@ public class DateTest {
         //then
         assertThat(weekend).isFalse();
     }
+
+    @Test
+    void 날짜가_31일_이라면_특별_지정_날이다() {
+        //given
+        int day = 31;
+        Date date = new Date(day);
+
+        //when
+        final boolean specialDay = date.isSpecialDay();
+
+        //then
+        assertThat(specialDay).isTrue();
+    }
 }
