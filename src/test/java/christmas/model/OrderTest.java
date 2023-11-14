@@ -37,4 +37,19 @@ public class OrderTest {
         //then
         assertThat(existDessert).isTrue();
     }
+
+    @Test
+    void 아이스크림2개와_초코케이크1개를_주문하면_디저트_갯수_3을_반환한다() {
+        //given
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("아이스크림", 2);
+        orderMenu.put("초코케이크", 1);
+        Order order = Order.of(orderMenu);
+
+        //when
+        final int dessertCount = order.dessertCount();
+
+        //then
+        assertThat(dessertCount).isEqualTo(3);
+    }
 }
