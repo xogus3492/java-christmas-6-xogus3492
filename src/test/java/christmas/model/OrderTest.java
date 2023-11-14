@@ -52,4 +52,19 @@ public class OrderTest {
         //then
         assertThat(dessertCount).isEqualTo(3);
     }
+
+    @Test
+    void 바비큐립1개와_초코케이크1개를_주문하면_메인메뉴가_존재한다() {
+        //given
+        Map<String, Integer> orderMenu = new HashMap<>();
+        orderMenu.put("바비큐립", 1);
+        orderMenu.put("초코케이크", 1);
+        Order order = Order.of(orderMenu);
+
+        //when
+        final boolean existMain = order.isExistMain();
+
+        //then
+        assertThat(existMain).isTrue();
+    }
 }
